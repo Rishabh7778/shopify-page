@@ -1,0 +1,252 @@
+:root {
+    --page-bg: #ffffff;
+    --card-bg: #f6f6f6;
+    --text-main: #0d0d0d;
+    --border-color: #e5e5e5;
+    --radius: 16px;
+    --padding: 24px;
+    --transition: 0.22s ease-out;
+}
+
+.faq-section {
+    padding: 60px 16px 80px;
+}
+
+.faq-container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* Title */
+.faq-title {
+    margin: 0 0 32px;
+    text-align: center;
+    font-size: clamp(26px, 3vw, 32px);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--text-main) !important;
+}
+
+/* List layout */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Card */
+.faq-item {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    transition: border-color var(--transition), background-color var(--transition);
+}
+
+/* Optional slight border when open for clarity */
+.faq-item.is-open {
+    border-color: var(--border-color);
+}
+
+/* Header (clickable area) */
+.faq-header {
+    width: 100%;
+    padding: var(--padding);
+    border: none;
+    outline: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-main);
+    text-align: left;
+}
+
+.faq-header:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.faq-header:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.faq-question {
+    flex: 1;
+}
+
+/* Icon base */
+.faq-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Horizontal line */
+.faq-icon::before,
+.faq-icon::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background: var(--text-main);
+    border-radius: 999px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform-origin: center;
+}
+
+/* Horizontal line (before) */
+.faq-icon::before {
+    transform: translate(-50%, -50%);
+}
+
+/* Vertical line (after) */
+.faq-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* WHEN OPEN → X ICON */
+.faq-item.is-open .faq-icon::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.faq-item.is-open .faq-icon::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Body */
+.faq-body {
+    padding: 0 var(--padding);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition), padding-bottom var(--transition),
+        padding-top var(--transition);
+    will-change: max-height;
+    color: var(--text-main) !important;
+}
+
+.faq-item.is-open .faq-body {
+    padding-top: 0;
+    padding-bottom: var(--padding);
+}
+
+/* Text inside body */
+.faq-body p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--text-main) !important;
+    max-width: 720px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .faq-section {
+        padding: 40px 12px 56px;
+    }
+
+    .faq-header {
+        padding: 20px;
+        font-size: 15px;
+    }
+
+    .faq-body {
+        padding: 0 20px;
+    }
+
+    .faq-item.is-open .faq-body {
+        padding-bottom: 20px;
+    }
+}
+
+.reasons-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Section Header */
+.reasons-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.reasons-title h2 {
+    font-size: 42px;
+    color: #1a1a1a !important;
+    margin-bottom: 15px;
+}
+
+.reasons-title p {
+    font-size: 16px;
+    color: black !important;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Grid Layout */
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Card Styling */
+.reason-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid transparent;
+}
+
+.reason-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #008060;
+    /* Shopify Green */
+}
+
+/* Icon Styling (Using Text/Emoji for simplicity, replace with SVGs/FontAwesome) */
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    background: #e0f7f0;
+    color: #008060;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.reason-card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.reason-card p {
+    font-size: 16px;
+    color: #555;
+    text-align: justify !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .reasons-title h2 {
+        font-size: 2rem;
+    }
+
+    .reasons-section {
+        padding: 50px 20px;
+    }
+}

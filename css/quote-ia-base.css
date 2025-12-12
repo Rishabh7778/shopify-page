@@ -1,0 +1,101 @@
+/* Quote IA Base Styles */
+
+.quote-ia-container {
+  width: 100%;
+ 
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+}
+
+
+.quote-ia-background {
+  background-image: url('../images/background.png');
+  background-size: cover;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 100px;
+  padding-left:16px;
+  padding-right:16px;
+  width: 100%;
+  height: auto;
+  padding-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote-ia-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+}
+
+.quote-ia-brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.1em;
+}
+
+/* Common Animations */
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progressLoader {
+  0% {
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Base Responsive */
+@media (max-width: 768px) {
+  .quote-ia-container {
+    padding: 1.5rem;
+  }
+}
+
+/* Remove side padding on section for mobile/tablet */
+@media (max-width: 1085px) {
+  .quote-ia-section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}

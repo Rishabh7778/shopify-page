@@ -1,0 +1,1557 @@
+/* Chat IA - BEM Methodology */
+
+/* Modal */
+.chat-ia__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .chat-ia__modal--open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+  }
+  
+  .chat-ia__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Chat Window */
+  .chat-ia__window {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    max-width: 90vw;
+    max-height: 90vh;
+    width: calc(100vw - 40px);
+    max-width: 1000px;
+    height: calc(100vh - 30px);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-ia__modal--open .chat-ia__window {
+    transform: scale(1);
+  }
+  
+  /* Chat Header */
+  .chat-ia__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    background: white;
+    flex-shrink: 0;
+  }
+  
+  .chat-ia__header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    position: relative;
+    top: 2px;
+    color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .chat-ia__close-button {
+    background: none;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+    outline: none;
+  }
+  
+  .chat-ia__close-button:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .chat-ia__close-button:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .chat-ia__close-button:active {
+    background: rgba(0, 0, 0, 0.12);
+    transform: scale(0.95);
+  }
+  
+  /* Messages Area */
+  .chat-ia__messages {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  /* Individual Messages */
+  .chat-ia__message {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+  }
+  
+  .chat-ia__message--user {
+    align-self: flex-end;
+    align-items: flex-end;
+  }
+  
+  .chat-ia__message--ai {
+    align-self: flex-start;
+    align-items: flex-start;
+  }
+  
+  .chat-ia__message-content {
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+  }
+  
+  .chat-ia__message--user .chat-ia__message-content {
+    background-color: rgba(0, 0, 0, 0.06);
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+    border-radius: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    font-size: 16px;
+  }
+  
+  .chat-ia__message--ai .chat-ia__message-content {
+    background-color: rgba(0, 0, 0, 0.03);
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0%;
+    font-size: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  .chat-ia__message-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  .chat-ia__message--user:hover .chat-ia__message-actions {
+    opacity: 1;
+  }
+  
+  .chat-ia__action-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 12px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .chat-ia__action-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .chat-ia__message-timestamp {
+    font-size: 11px;
+    color: #9CA3AF;
+    margin-top: 4px;
+  }
+  
+  /* Chunked Messages - Better readability */
+  .chat-ia__message--chunk {
+    margin-bottom: 8px;
+    animation: fadeInUp 0.3s ease-out;
+  }
+  
+  .chat-ia__message--chunk:not(:last-child) {
+    margin-bottom: 4px;
+  }
+  
+  .chat-ia__message--chunk:last-child {
+    margin-bottom: 16px;
+  }
+  
+  /* Reduce spacing between consecutive AI chunks */
+  .chat-ia__message--ai.chat-ia__message--chunk + .chat-ia__message--ai.chat-ia__message--chunk {
+    margin-top: -8px;
+  }
+  
+  /* Subtle visual distinction for chunks - border removed per user request */
+  .chat-ia__message--chunk .chat-ia__message-content {
+    position: relative;
+  }
+  
+  /* Animation for chunked messages */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Input Area - Unified container with no gaps */
+.chat-ia__input-area {
+  padding: 40px;
+}
+
+/* Unified Input Container - No gaps between sections */
+.chat-ia__input-container {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Top section - Text Input */
+.chat-ia__input-box {
+  background: white;
+  padding:24px 20px;
+}
+
+.chat-ia__text-input {
+  width: 100%;
+  font-weight: 400;
+  padding: 0;
+  display: flex;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  resize: none;
+  max-height: 100px;
+  color: #000000;
+  line-height: 1.4;
+}
+
+.chat-ia__text-input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Bottom section - Action Bar with gray background */
+.chat-ia__action-bar {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 18px 20px; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.chat-ia__left-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-ia__upload-button {
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.chat-ia__upload-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+
+.chat-ia__upload-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.chat-ia__right-icons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.chat-ia__task-dropdown {
+  position: relative;
+  min-width: 160px;
+  max-width: 220px;
+}
+
+.chat-ia__task-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 9px 14px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  justify-content: flex-start;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.chat-ia__task-button:hover {
+  background: rgba(0, 0, 0, 0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.chat-ia__task-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.chat-ia__task-button:active {
+  transform: translateY(0);
+}
+
+.chat-ia__task-button svg {
+  color: white;
+  flex-shrink: 0;
+}
+
+.chat-ia__task-button span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Task Overlay - Full Screen Modal */
+.chat-ia__task-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 15000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chat-ia__task-overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.chat-ia__task-overlay-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.chat-ia__task-modal {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: calc(100vw - 40px);
+  max-height: 80vh;
+  overflow: hidden;
+  transform: scale(0.9) translateY(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chat-ia__task-overlay--open .chat-ia__task-modal {
+  transform: scale(1) translateY(0);
+}
+
+.chat-ia__task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 24px 16px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.chat-ia__task-header h3 {
+  margin: 0;
+  font-size: 20px;
+  position: relative;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  top: 2px;
+}
+
+.chat-ia__task-close {
+  background: none;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.chat-ia__task-close:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.chat-ia__task-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.chat-ia__task-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.chat-ia__task-option:last-child {
+  border-bottom: none;
+}
+
+.chat-ia__task-option:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.chat-ia__task-option:active {
+  background: rgba(0, 0, 0, 0.08);
+  transform: scale(0.98);
+}
+
+.chat-ia__task-icon {
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chat-ia__task-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-ia__task-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 4px;
+}
+
+.chat-ia__task-description {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.4;
+}
+
+.chat-ia__enter-button {
+  background: black;
+  border: none;
+  cursor: pointer;
+  color: white;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.chat-ia__enter-button svg {
+  color: white;
+  position: relative;
+  left: -1px;
+  top: 1px;
+}
+
+.chat-ia__enter-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+
+.chat-ia__enter-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.chat-ia__enter-button:active {
+  transform: scale(0.95);
+}
+
+
+
+
+
+/* Remove old input form styles */
+.chat-ia__input-form {
+  display: none;
+}
+
+  /* Trigger Button */
+  /* .chat-ia__trigger {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .chat-ia__open-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+  }
+  
+  .chat-ia__open-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  } */
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .chat-ia__window {
+      width: 100vw;
+      height: 90vh;
+      margin: 0;
+    }
+    
+    .chat-ia__header {
+      padding: 20px 20px 12px 20px;
+    }
+    
+    .chat-ia__header h3 {
+      font-size: 18px;
+    }
+    
+    .chat-ia__close-button {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .chat-ia__messages {
+      padding: 15px;
+    }
+    
+    /* Make messages full width on mobile */
+    .chat-ia__message {
+      max-width: 100%;
+    }
+    
+    .chat-ia__input-area {
+      padding: 15px;
+    }
+    
+    .chat-ia__action-bar {
+      gap: 8px;
+      padding: 12px 15px;
+    }
+    
+    .chat-ia__left-actions {
+      gap: 8px;
+      flex: 1;
+    }
+    
+    .chat-ia__task-dropdown {
+      min-width: 140px;
+      max-width: 180px;
+    }
+    
+    .chat-ia__task-button {
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+    
+    .chat-ia__upload-button,
+    .chat-ia__enter-button {
+      width: 34px;
+      height: 34px;
+    }
+    
+    .chat-ia__dropdown-item {
+      padding: 10px 14px;
+      font-size: 12px;
+    }
+    
+    /* Mobile task overlay adjustments */
+    .chat-ia__task-modal {
+      max-width: calc(100vw - 20px);
+      width: calc(100vw - 20px);
+      max-height: 85vh;
+    }
+    
+    .chat-ia__task-header {
+      padding: 20px 20px 12px 20px;
+    }
+    
+    .chat-ia__task-header h3 {
+      font-size: 18px;
+    }
+    
+    .chat-ia__task-option {
+      padding: 14px 20px;
+      gap: 12px;
+    }
+    
+    .chat-ia__task-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+    
+    .chat-ia__task-title {
+      font-size: 15px;
+    }
+    
+    .chat-ia__task-description {
+      font-size: 13px;
+    }
+  }
+  
+  /* Animations */
+  @keyframes modalSlideIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9) translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  
+  .chat-ia__modal--open .chat-ia__window {
+    animation: modalSlideIn 0.3s ease forwards;
+  }
+/* Prevent body scroll when modal is open - safer approach */
+body.chat-ia-modal-open {
+  overflow: hidden;
+  /* Remove position: fixed to prevent layout shifts */
+}
+
+/* Ensure modal is always on top */
+.chat-ia__modal {
+  z-index: 9999;
+}
+
+/* Smooth overlay click feedback */
+.chat-ia__overlay {
+  cursor: pointer;
+}
+
+/* Prevent clicks on chat window from closing modal */
+.chat-ia__window {
+  cursor: default;
+}
+
+/* Gradiente dorado SOLO para mensajes del BOT */
+.chat-ia__message--ai .chat-ia__message-content .chat-ia__email-gradient {
+  background: linear-gradient(135deg, #f7d379 0%, #e9be65 50%, #c89447 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  font-weight: 600 !important;
+  padding: 0 2px;
+  border-radius: 2px;
+  display: inline;
+}
+
+/* Email en mensaje de usuario - SIN gradiente, mantener estilo normal */
+.chat-ia__message--user .chat-ia__message-content .chat-ia__email-gradient {
+  background: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  color: inherit !important;
+  font-weight: inherit !important;
+}
+
+/* Links de Calendly con gradiente dorado */
+.chat-ia__calendly-link {
+  background: linear-gradient(135deg, 
+    rgba(247, 211, 121, 1) 0%,
+    rgba(233, 190, 101, 1) 10%,
+    rgba(245, 229, 131, 1) 20%,
+    rgba(200, 148, 71, 1) 30%,
+    rgba(220, 171, 87, 1) 40%,
+    rgba(214, 164, 83, 1) 50%,
+    rgba(247, 216, 123, 1) 60%,
+    rgba(165, 115, 49, 1) 70%,
+    rgba(193, 141, 66, 1) 80%,
+    rgba(192, 138, 65, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.chat-ia__calendly-link:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 223, 133, 1) 0%,
+    rgba(245, 202, 113, 1) 10%,
+    rgba(255, 241, 143, 1) 20%,
+    rgba(212, 160, 83, 1) 30%,
+    rgba(232, 183, 99, 1) 40%,
+    rgba(226, 176, 95, 1) 50%,
+    rgba(255, 228, 135, 1) 60%,
+    rgba(177, 127, 61, 1) 70%,
+    rgba(205, 153, 78, 1) 80%,
+    rgba(204, 150, 77, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.chat-ia__calendly-link:active {
+  transform: translateY(1px);
+}
+
+/* Gradiente duplicado removido - se usa la definición de arriba con mayor especificidad */
+
+/* Indicador de typing */
+.chat-ia__message--typing {
+  opacity: 0.8;
+}
+
+.chat-ia__typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.chat-ia__typing-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.chat-ia__typing-dots span {
+  width: 6px;
+  height: 6px;
+  background-color: #cccccc;
+  border-radius: 50%;
+  animation: typing-bounce 1.4s infinite ease-in-out both;
+}
+
+.chat-ia__typing-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.chat-ia__typing-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.chat-ia__typing-dots span:nth-child(3) {
+  animation-delay: 0;
+}
+
+@keyframes typing-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.chat-ia__typing-text {
+  font-size: 12px;
+  color: #999999;
+  font-style: italic;
+  margin-left: 4px;
+}
+
+/* File Preview Area */
+.chat-ia__file-preview {
+  padding: 16px;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #f8f9fa;
+}
+
+.chat-ia__file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-ia__file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  transition: all 0.2s ease;
+}
+
+.chat-ia__file-item:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.chat-ia__file-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.chat-ia__file-info svg {
+  color: #ef4444;
+  flex-shrink: 0;
+}
+
+.chat-ia__file-name {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+  flex: 1;
+  word-break: break-all;
+}
+
+.chat-ia__file-size {
+  font-size: 12px;
+  color: #6b7280;
+  margin-left: 8px;
+}
+
+.chat-ia__file-remove {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.chat-ia__file-remove:hover {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.chat-ia__file-remove:active {
+  transform: scale(0.95);
+}
+
+/* Case Studies Links con gradiente dorado y efecto hover */
+.chat-ia__case-study-link {
+  background: linear-gradient(135deg, 
+    rgba(247, 211, 121, 1) 0%,
+    rgba(233, 190, 101, 1) 10%,
+    rgba(245, 229, 131, 1) 20%,
+    rgba(200, 148, 71, 1) 30%,
+    rgba(220, 171, 87, 1) 40%,
+    rgba(214, 164, 83, 1) 50%,
+    rgba(247, 216, 123, 1) 60%,
+    rgba(165, 115, 49, 1) 70%,
+    rgba(193, 141, 66, 1) 80%,
+    rgba(192, 138, 65, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid transparent;
+  background-origin: border-box;
+}
+
+.chat-ia__case-study-link:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 223, 133, 1) 0%,
+    rgba(245, 202, 113, 1) 10%,
+    rgba(255, 241, 143, 1) 20%,
+    rgba(212, 160, 83, 1) 30%,
+    rgba(232, 183, 99, 1) 40%,
+    rgba(226, 176, 95, 1) 50%,
+    rgba(255, 228, 135, 1) 60%,
+    rgba(177, 127, 61, 1) 70%,
+    rgba(205, 153, 78, 1) 80%,
+    rgba(204, 150, 77, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(247, 211, 121, 0.2);
+}
+
+.chat-ia__case-study-link:active {
+  transform: translateY(0);
+}
+
+/* Links genéricos con gradiente más sutil */
+.chat-ia__generic-link {
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 1) 0%,
+    rgba(37, 99, 235, 1) 50%,
+    rgba(29, 78, 216, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chat-ia__generic-link:hover {
+  background: linear-gradient(135deg, 
+    rgba(96, 165, 250, 1) 0%,
+    rgba(59, 130, 246, 1) 50%,
+    rgba(37, 99, 235, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transform: translateY(-1px);
+}
+
+.chat-ia__generic-link:active {
+  transform: translateY(0);
+}
+
+/* Icono de enlace externo */
+.chat-ia__external-icon {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: normal;
+  margin-left: 2px;
+  transition: all 0.2s ease;
+}
+
+.chat-ia__case-study-link:hover .chat-ia__external-icon,
+.chat-ia__calendly-link:hover .chat-ia__external-icon,
+.chat-ia__generic-link:hover .chat-ia__external-icon {
+  color: rgba(0, 0, 0, 0.7);
+  transform: translateX(1px) translateY(-1px);
+}
+
+/* Mejorar hover del Calendly link (ya existente) */
+.chat-ia__calendly-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Contenedor de múltiples case studies */
+.chat-ia__case-studies-container {
+  margin: 20px 0;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.chat-ia__case-studies-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 16px 0;
+  text-align: center;
+}
+
+.chat-ia__case-studies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+/* Case Study Cards - Compactas y elegantes */
+.chat-ia__case-study-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 0; /* Remove margin when in grid */
+  max-width: 100%; /* Allow full width in grid */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-ia__case-study-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.chat-ia__case-study-card:active {
+  transform: translateY(0);
+}
+
+/* Imagen del case study */
+.chat-ia__case-study-image {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f8f9fa;
+}
+
+.chat-ia__case-study-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.chat-ia__case-study-card:hover .chat-ia__case-study-image img {
+  transform: scale(1.1);
+}
+
+.chat-ia__case-study-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.chat-ia__case-study-card:hover .chat-ia__case-study-overlay {
+  opacity: 0;
+}
+
+.chat-ia__case-study-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Contenido del case study */
+.chat-ia__case-study-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-ia__case-study-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.chat-ia__case-study-description {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+/* Botón del case study */
+.chat-ia__case-study-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, 
+    rgba(247, 211, 121, 1) 0%,
+    rgba(233, 190, 101, 1) 50%,
+    rgba(200, 148, 71, 1) 100%
+  );
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.chat-ia__case-study-button:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 223, 133, 1) 0%,
+    rgba(245, 202, 113, 1) 50%,
+    rgba(212, 160, 83, 1) 100%
+  );
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(247, 211, 121, 0.3);
+}
+
+.chat-ia__case-study-button:active {
+  transform: translateY(0);
+}
+
+.chat-ia__case-study-arrow {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.chat-ia__case-study-button:hover .chat-ia__case-study-arrow {
+  transform: translateX(2px);
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .chat-ia__case-studies-container {
+    margin: 16px 0;
+    padding: 12px;
+  }
+  
+  .chat-ia__case-studies-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .chat-ia__case-study-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 16px;
+    max-width: 100%;
+  }
+  
+  .chat-ia__case-study-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+  
+  .chat-ia__case-study-content {
+    text-align: center;
+  }
+  
+  .chat-ia__case-study-title {
+    font-size: 15px;
+  }
+  
+  .chat-ia__case-study-description {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .chat-ia__case-study-button {
+    font-size: 11px;
+    padding: 8px 16px;
+  }
+
+  .chat-ia__case-study-link,
+  .chat-ia__calendly-link,
+  .chat-ia__generic-link {
+    padding: 6px 8px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  .chat-ia__external-icon {
+    font-size: 14px;
+  }
+}
+
+/* Animación sutil al aparecer */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-ia__case-study-card {
+  animation: slideInUp 0.4s ease forwards;
+}
+
+/* ========================================
+   🔒 EMAIL CAPTURE OVERLAY
+   ======================================== */
+
+.chat-ia__email-overlay {
+  position: absolute;
+  top: 60px; /* Start below header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5); /* Mucho más transparente - se ve mejor el fondo */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 20px 20px 20px;
+  animation: fadeIn 0.3s ease;
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.chat-ia__email-capture-card {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  padding: 48px 40px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  animation: slideInScale 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideInScale {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.chat-ia__email-capture-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.chat-ia__email-capture-subtitle {
+  font-size: 15px;
+  color: #666;
+  margin: 0 0 32px 0;
+  line-height: 1.5;
+}
+
+.chat-ia__email-capture-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chat-ia__email-input-wrapper {
+  position: relative;
+}
+
+.chat-ia__email-capture-input {
+  width: 100%;
+  padding: 14px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: all 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.chat-ia__email-capture-input:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.chat-ia__email-capture-input::placeholder {
+  color: #999;
+}
+
+.chat-ia__email-capture-button {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #000 0%, #333 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.chat-ia__email-capture-button:hover {
+  background: linear-gradient(135deg, #1a1a1a 0%, #444 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.chat-ia__email-capture-button:active {
+  transform: translateY(0);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .chat-ia__email-overlay {
+    padding: 40px 16px 16px 16px;
+    top: 56px; /* Adjust for mobile header */
+  }
+  
+  .chat-ia__email-capture-card {
+    padding: 36px 24px;
+  }
+  
+  .chat-ia__email-capture-title {
+    font-size: 20px;
+  }
+  
+  .chat-ia__email-capture-subtitle {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  
+  .chat-ia__email-capture-input {
+    padding: 12px 16px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  .chat-ia__email-capture-button {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+/* ========================================
+   🎯 FREE AUDIT BUTTON
+   ======================================== */
+
+.chat-ia__free-audit-container {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.04) 100%);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  animation: slideInFromBottom 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-ia__free-audit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-ia__free-audit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s;
+}
+
+.chat-ia__free-audit-button:hover::before {
+  left: 100%;
+}
+
+.chat-ia__free-audit-button:hover {
+  background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.chat-ia__free-audit-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chat-ia__free-audit-button svg:first-child {
+  flex-shrink: 0;
+}
+
+.chat-ia__free-audit-button span {
+  flex: 1;
+  text-align: left;
+}
+
+.chat-ia__gradient-text {
+  background: linear-gradient(135deg, #f7d379 0%, #e9be65 50%, #c89447 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.chat-ia__external-link-icon {
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.chat-ia__free-audit-button:hover .chat-ia__external-link-icon {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .chat-ia__free-audit-container {
+    padding: 12px 16px;
+  }
+  
+  .chat-ia__free-audit-button {
+    padding: 14px 20px;
+    font-size: 15px;
+    gap: 10px;
+  }
+  
+  .chat-ia__free-audit-button svg:first-child {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .chat-ia__external-link-icon {
+    width: 14px;
+    height: 14px;
+  }
+}

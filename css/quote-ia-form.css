@@ -1,0 +1,828 @@
+df/* Quote IA Form Styles */
+.quote-ia-logo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-ia-logo img {
+  width: 100%;
+  height: auto;
+  width: 180px;
+  margin-bottom: 22px;
+}
+
+.quote-ia-form-container {
+  max-width: 1000px;
+  display: flex;
+  width: 100%;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 48px 40px 40px 40px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Progress Bar */
+.quote-ia-progress {
+  margin-bottom: 2rem;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.quote-ia-progress-bar {
+  width: 100%;
+  max-width: 594px;
+  height: 8px;
+  background: #333333;
+  border-radius: 40px;
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+}
+
+.quote-ia-progress-fill {
+  width: 0% !important;
+  height: 100%;
+  display: block !important;
+  background: linear-gradient(90deg, #F7D379 0%, #E9BE65 13.02%, #F5E583 23.44%, #C89447 38.8%, #DCAB57 46.06%, #D6A453 54.62%, #F7D87B 63.95%, #A57331 73.55%, #C18D42 83.41%, #C08A41 100%);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+  min-width: 0px;
+}
+
+/* Typing Animation Container */
+.quote-ia-typing-container {
+  text-align: center;
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 16px;
+  gap: 12px;
+}
+
+.quote-ia-typing-fixed {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.quote-ia-typing-text {
+  color: #ffffff;
+  border-right: 2px solid #ffffff;
+  animation: cursor-blink 1s infinite;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  line-height: 1.5;
+}
+
+@keyframes cursor-blink {
+  0%, 50% { border-right-color: #ffffff; }
+  51%, 100% { border-right-color: transparent; }
+}
+
+/* Input Container */
+.quote-ia-input-container {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.quote-ia-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.quote-ia-input-wrapper:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.quote-ia-input-wrapper:focus-within {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.quote-ia-main-input-simple {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  outline: none;
+  font-family: inherit;
+  font-weight: 400;
+}
+
+.quote-ia-main-input-simple::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.quote-ia-file-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(40px);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #ffffff;
+  flex-shrink: 0;
+  outline: none;
+}
+
+.quote-ia-file-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.quote-ia-file-btn:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.quote-ia-file-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.quote-ia-task-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #ffffff;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  height: 36px;
+  outline: none;
+}
+
+.quote-ia-task-selector:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.quote-ia-task-selector:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.quote-ia-task-selector:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.quote-ia-task-selector svg {
+  color: #ffffff;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.quote-ia-task-text {
+  font-size: 14px;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.quote-ia-chat-messages {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.quote-ia-message {
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #e0e0e0;
+  animation: messageSlideIn 0.3s ease;
+}
+
+.quote-ia-main-input-area{
+  background: #171717;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  overflow: hidden;
+}
+
+.quote-ia-main-input {
+  width: 100%;
+  background: #171717;
+  border: none;
+  padding: 30px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  color: #ffffff;
+  font-size: 100%;
+  letter-spacing: 0%;
+  line-height: 100%;
+  outline: none;
+  min-height: 106px;
+  font-family: inherit;
+  resize: none; /* PREVENIR RESIZE */
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+}
+
+.quote-ia-main-input:focus-visible {
+  outline: none;
+}
+
+.quote-ia-main-input:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.quote-ia-main-input::placeholder {
+  color: rgba(255, 255, 255, 0.743);
+  line-height: 1.5;
+}
+
+
+/* File Preview Area */
+.quote-ia-file-preview-area {
+  padding: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: 80px;
+  overflow-y: auto;
+}
+
+.quote-ia-file-preview {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  color: #ffffff;
+  gap: 6px;
+}
+
+.quote-ia-file-remove {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  font-size: 0.7rem;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.quote-ia-file-remove:hover {
+  background: rgba(255, 107, 107, 0.2);
+}
+
+
+
+/* Input Area */
+.quote-ia-input-area {
+  display: flex;
+  background-color:rgba(0, 0, 0, 0.8);
+  padding: 20px;
+
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  align-items: center;
+  gap:8px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.quote-ia-dropdown-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 30px;
+  background: #2a2a2a;
+  flex-shrink: 0;
+  padding: 8px 16px;
+  white-space: nowrap;
+  min-width: 157px;
+  max-width: 400px;
+  width: auto;
+  box-sizing: border-box;
+  transition: width 0.2s ease;
+}
+
+/* Task Select - Nuevo estilo */
+.quote-ia-task-select {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  min-width: 120px;
+}
+
+.quote-ia-task-select option {
+  background: #2a2a2a;
+  color: #ffffff;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+/* Add button */
+.quote-ia-add-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.quote-ia-add-btn:hover {
+  background: #444444;
+}
+
+.quote-ia-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.quote-ia-input-wrapper {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.quote-ia-input-wrapper:focus-within {
+  border-color: #ffd700;
+}
+
+.quote-ia-task-icon {
+  position: relative;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quote-ia-task-label {
+  font-size: 0.8rem;
+  color: #999999;
+  white-space: nowrap;
+}
+
+.quote-ia-task-select {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  outline: none;
+  margin-left: 4px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  min-width: 120px;
+  flex: 1;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.quote-ia-task-select option {
+  background: #2a2a2a;
+  color: #ffffff;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.quote-ia-chat-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.quote-ia-chat-input::placeholder {
+  color: #666666;
+}
+
+/* Quote button */
+.quote-ia-quote-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  white-space: nowrap;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.quote-ia-quote-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.quote-ia-quote-btn:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.quote-ia-quote-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.quote-ia-quote-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.quote-ia-response {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #1a1a1a;
+  border-radius: 8px;
+  border-left: 4px solid #ffd700;
+}
+
+.quote-ia-tags-section {
+  margin-bottom: 1.5rem;
+}
+
+.quote-ia-tags-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.quote-ia-selected-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  min-height: 32px;
+}
+
+.quote-ia-selected-tag {
+  background: rgba(255, 215, 0, 0.2);
+  border: 1px solid #ffd700;
+  color: #ffd700;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quote-ia-tag-remove {
+  background: none;
+  border: none;
+  color: #ffd700;
+  cursor: pointer;
+  font-size: 0.7rem;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.quote-ia-tag-remove:hover {
+  background: rgba(255, 215, 0, 0.3);
+}
+
+/* Available Tags */
+.quote-ia-available-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.quote-ia-tag-option {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cccccc;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quote-ia-tag-option:hover {
+  border-color: #ffd700;
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.quote-ia-tag-option.selected {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Submit Area */
+.quote-ia-submit-area {
+  display: flex;
+  justify-content: center;
+}
+
+.quote-ia-input-row{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+
+/* Form Responsive */
+@media (max-width: 768px) {
+  .quote-ia-form-container {
+    padding: 20px 16px;
+  }
+  
+  /* Mobile typing container */
+  .quote-ia-typing-container {
+    font-size: 14px;
+    height: 88px;
+    padding: 12px 12px;
+    gap: 10px;
+  }
+  
+  .quote-ia-typing-fixed {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .quote-ia-typing-text {
+    font-size: 14px;
+    min-height: 26px;
+    line-height: 1.4;
+  }
+  
+  /* Mobile input container */
+  .quote-ia-input-container {
+    padding: 12px;
+  }
+  
+  .quote-ia-input-wrapper {
+    gap: 6px;
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    min-height: 48px;
+  }
+  
+  .quote-ia-main-input-simple {
+    font-size: 14px;
+    flex-basis: 100%;
+    min-width: 0;
+  }
+  
+  .quote-ia-file-btn {
+    display: none;
+  }
+  
+  .quote-ia-task-selector {
+    padding: 6px 10px;
+    height: 32px;
+  }
+  
+  .quote-ia-task-text {
+    font-size: 13px;
+  }
+  
+  .quote-ia-quote-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    height: 32px;
+  }
+
+  /* Mobile layout for input-area - column direction */
+  .quote-ia-input-area {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    position: relative;
+  }
+
+  .quote-ia-add-btn {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+  }
+
+  .quote-ia-dropdown-wrapper {
+    flex: 1;
+    max-width: none;
+    width: auto;
+  }
+
+  .quote-ia-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .quote-ia-add-btn {
+    order: 1;
+    flex-shrink: 0;
+  }
+
+  .quote-ia-dropdown-wrapper {
+    order: 2;
+    flex: 1;
+  }
+
+  .quote-ia-task-select {
+    font-size: 13px;
+    max-width: none;
+    flex: 1;
+  }
+
+  .quote-ia-quote-btn {
+    width: 100% !important;
+    max-width: none !important;
+    order: 3;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 8px;
+    flex: 1;
+    min-width: 100%;
+    flex-shrink: 1;
+    white-space: normal;
+  }
+
+  /* Additional mobile adjustments */
+  .quote-ia-main-input {
+    font-size: 14px;
+    padding: 12px;
+    overflow: scroll;
+    min-height: 160px;
+  }
+
+  .quote-ia-progress-text {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .quote-ia-form-container {
+    padding: 16px 12px;
+  }
+  
+  /* Extra small mobile typing container */
+  .quote-ia-typing-container {
+    font-size: 13px;
+    height: 82px;
+    padding: 10px 8px;
+    gap: 8px;
+  }
+  
+  .quote-ia-typing-fixed {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  .quote-ia-typing-text {
+    font-size: 13px;
+    min-height: 24px;
+    line-height: 1.4;
+  }
+  
+  /* Extra small mobile input */
+  .quote-ia-input-container {
+    padding: 10px;
+  }
+  
+  .quote-ia-input-wrapper {
+    gap: 4px;
+    padding: 10px 12px;
+    min-height: 44px;
+  }
+  
+  .quote-ia-main-input-simple {
+    font-size: 13px;
+    flex-basis: 100%;
+    min-width: 0;
+  }
+  
+  .quote-ia-file-btn {
+    display: none;
+  }
+  
+  .quote-ia-task-selector {
+    padding: 4px 8px;
+    height: 28px;
+  }
+  
+  .quote-ia-task-text {
+    font-size: 12px;
+  }
+  
+  .quote-ia-quote-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    height: 28px;
+  }
+
+  .quote-ia-input-area {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .quote-ia-add-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .quote-ia-dropdown-wrapper {
+    padding: 6px 12px;
+    min-width: 120px;
+  }
+
+  .quote-ia-task-select {
+    font-size: 12px;
+    max-width: 80px;
+  }
+}
