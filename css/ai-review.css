@@ -324,9 +324,9 @@
     }
 }
 
-.block__ai-review-trusted-logo img {
+/* .block__ai-review-trusted-logo img {
     width: 100%
-}
+} */
 
 @media screen and (max-width: 1500px) {
     .block__ai-review-video-logo {
