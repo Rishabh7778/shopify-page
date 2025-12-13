@@ -1,2 +1,590 @@
-.block__ai-review-wrapper{display:flex;gap:9px}.block__ai-review{width:calc(50% - 4px);border-radius:20px;background:#000;overflow:hidden}.block__ai-review .slick-prev{display:none!important}.block__ai-review-item{background:#000;position:relative;height:100%}.block__ai-review-item video{width:100%}.block__ai-review-item img{width:100%}.block__ai-review-video-wrapper{position:relative}.block__ai-review-video-wrapper:before{content:"";position:absolute;top:0;right:0;left:0;bottom:0;display:block;background:linear-gradient(359deg,black,#00000052,#00000026,#00000000,transparent);z-index:1}.block__ai-review-video-boxplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;cursor:pointer}.block__ai-review-video-info{padding:0 40px 60px}.block__ai-review-video-info-header{display:flex;position:relative;z-index:1}.block__ai-review-video-logo{background-color:#fff;width:37%;border-radius:16px 16px 0 0;padding:5px 68px;display:flex;justify-content:center;align-items:center}.block__ai-review-video-logo img{max-width:119px;height:fit-content}.block__ai-review-video-text-wrapper{border-radius:10px;padding-left:10px;padding-bottom:10px;background:#000;width:63%}.block__ai-review-video-text{background-color:#fbf7ed;border-radius:10px;display:flex;align-items:center;gap:10px;padding:20px 30px;height:100%}.block__ai-review-video-rate{font-weight:600;font-size:21.94px;line-height:100%;color:#000}.block__ai-review-video-rate path{fill:#000}.block__ai-review-video-rate-content{font-weight:500;font-size:18px;line-height:130%;color:#000}.block__ai-review-video-info-text{background-color:#fff;padding:48px 60px 28px;position:relative;width:calc(100% - 20px)}.block__ai-review-video-info-text:before{height:20px;width:80%;background-color:#fff;content:"";display:block;position:absolute;top:-19px;left:0}.block__ai-review-video-info-text>p{margin:0 0 20px;font-weight:500;font-size:20px;line-height:34px;color:#000}.block__ai-review-video-info-profile{padding-top:20px;position:relative}.block__ai-review-video-info-profile:before{content:"";background:linear-gradient(90deg,#f7d379,#e9be65 13.02%,#f5e583 23.44%,#c89447 38.8%,#dcab57 46.06%,#d6a453 54.62%,#f7d87b 63.95%,#a57331 73.55%,#c18d42 83.41%,#c08a41);height:1px;width:100%;display:block;position:absolute;top:0}.block__ai-review-video-info-profile h6{font-weight:600;font-size:20px;line-height:28px;color:#000;margin:0}.block__ai-review-video-info-profile p{font-weight:300;font-style:Italic;font-size:16px;line-height:28px;margin:0}.block__ai-review-video-info-arrow{background-color:#000;padding:24px 14px 3px 22px;position:absolute;right:-10px;bottom:-10px;border-radius:10px 0 0;cursor:pointer}.block__ai-review-video-info-arrow .icon-ai-acco-open{display:none}.block__ai-review-video-info-arrow:hover .icon-ai-acco-open{display:block}.block__ai-review-video-info-arrow:hover .icon-ai-right-arrow{display:none}.block__ai-review-video-info-blank-bottom{width:calc(100% - 66px);height:20px;position:absolute;left:0;bottom:-20px;background:#fff;border-radius:0 0 10px 10px}.block__ai-review-video-info-blank-bottom-right{height:calc(100% - 57px);width:20px;position:absolute;right:-20px;top:0;background:#fff;border-radius:0 10px 10px 0}.block__ai-review-heading{font-weight:400;font-size:42px;line-height:53px;text-align:center;margin:0;padding:60px 0 52px}.block__ai-review-trusted-logos{border-radius:20px;width:calc(50% - 4px);overflow:hidden}.block__ai-review-trusted-logos-wrapper{display:flex;position:relative;height:600px;overflow:hidden}.block__ai-review-trusted-logos-wrapper:before{content:"";width:100%;position:absolute;top:0;right:0;left:0;height:80px;display:block;background:linear-gradient(180deg,#fff,#fff0);z-index:2;pointer-events:none}.block__ai-review-trusted-logos-wrapper:after{content:"";width:100%;position:absolute;bottom:0;right:0;left:0;height:80px;display:block;background:linear-gradient(180deg,#fff0,#fff);z-index:2;pointer-events:none}.block__ai-review-trusted-logos-column{width:33.33%;height:100%;overflow:hidden;border-right:1px solid #0000000a}.block__ai-review-trusted-logos-column:last-child{border-right:none}.block__ai-review-trusted-logos-column-inner{display:flex;flex-direction:column;animation-iteration-count:infinite;animation-timing-function:linear}.block__ai-review-trusted-logos-column--slow .block__ai-review-trusted-logos-column-inner{animation-name:scrollSlow;animation-duration:60s}.block__ai-review-trusted-logos-column--fast .block__ai-review-trusted-logos-column-inner{animation-name:scrollFast;animation-duration:25.7s}.block__ai-review-trusted-logo{width:100%;display:flex;align-items:center;justify-content:center;border-bottom:1px solid #0000000a;padding:20px;min-height:120px;flex-shrink:0}@keyframes scrollSlow{0%{transform:translateY(0)}to{transform:translateY(-50%)}}@keyframes scrollFast{0%{transform:translateY(0)}to{transform:translateY(-50%)}}.block__ai-review-trusted-logo img{width:100%}@media screen and (max-width: 1500px){.block__ai-review-video-logo{width:34%;padding:28px 60px 10px}.block__ai-review-video-text-wrapper{width:66%}.block__ai-review-video-info-text{padding:48px 40px 28px 60px}}@media screen and (max-width: 1440px){.block__ai-review-video-info-text{padding:48px 55px 28px 40px}.block__ai-review-video-text{padding:20px}.block__ai-review-video-info-text>p{font-size:18px;line-height:32px}}@media screen and (max-width: 1400px){.block__ai-review-video-info{padding:0 30px 50px}.block__ai-review-video-rate{font-size:19.94px}.block__ai-review-video-rate-content{font-size:16px}.block__ai-review-video-info-text{padding:35px 50px 28px 40px}}@media screen and (max-width: 1300px){.block__ai-review-video-info-text{padding:25px 40px 14px}.block__ai-review-video-logo{padding:25px 40px 10px}.block__ai-review-video-logo img{max-width:90px}.block__ai-review-video-info-text>p{font-size:16px;line-height:29px}.block__ai-review-video-text{padding:15px;height:100%}.block__ai-review-heading{padding:60px 20px 52px;font-size:38px}.block__ai-review-video-rate svg{height:24px;width:24px}}@media screen and (max-width: 1200px){.block__ai-review-video-logo img{max-width:80px}.block__ai-review-video-info-text{padding:25px 35px 10px}.block__ai-review-video-logo{padding:18px 40px 10px;width:30%}.block__ai-review-video-text-wrapper{width:70%}.block__ai-review-video-rate{font-size:17.94px}.block__ai-review-video-rate-content{font-size:15px}.block__ai-review-video-info-text>p{font-size:15px}.block__ai-review-video-info-profile h6{font-size:18px}.block__ai-review-video-info-profile p{font-size:14px;line-height:26px}.block__ai-review-heading{font-size:34px}}@media screen and (max-width: 1084px){.block__ai-review-section .container_content{padding:0 20px}}@media screen and (max-width: 1023px){.block__ai-review-wrapper{flex-wrap:wrap}.block__ai-review,.block__ai-review-trusted-logos{width:100%}.block__ai-review-trusted-logos-wrapper{height:400px}.block__ai-review-trusted-logo{min-height:100px;padding:15px}}@media screen and (max-width: 767px){.block__ai-review-video-info{padding:0 20px 40px}.block__ai-review-video-info-text{padding:20px 0 0 20px}.block__ai-review-video-logo{padding:21px 20px 0}.block__ai-review-video-rate{font-size:16px}.block__ai-review-video-rate-content{font-size:14px;font-weight:500}.block__ai-review-video-text{padding:10px 8px}.block__ai-review-video-info-text>p{font-weight:500;font-size:16px;line-height:28px}.block__ai-review-video-info-profile>*{max-width:194px}.block__ai-review-video-text{align-items:baseline;gap:0}.block__ai-review-video-rate{min-width:65px}.block__ai-review-video-info-arrow{padding:13px 0 0 13px}.block__ai-review-video-info-blank-bottom-right{height:calc(100% - 43px);right:-19px}.block__ai-review-video-info-blank-bottom{width:calc(100% - 43px);bottom:-19px}.block__ai-review-video-logo{border-radius:10px 10px 0 0}.block__ai-review-video-text-wrapper{padding-left:5px;padding-bottom:5px}.block__ai-review-video-logo{width:35%}.block__ai-review-video-text-wrapper{width:65%}.block__ai-review-heading{font-weight:400;font-size:28px;line-height:38px;padding:40px 20px 20px}.block__ai-review-video-info-text:before{top:-17px;left:0}.block__ai-review-trusted-logos{border-radius:10px}.block__ai-review-trusted-logos-wrapper{height:300px}.block__ai-review-trusted-logo{min-height:80px;padding:10px}.block__ai-review-video-boxplay svg{width:40px;height:40px}}
+.block__ai-review-wrapper {
+    display: flex;
+    gap: 9px
+}
+
+.block__ai-review {
+    width: calc(50% - 4px);
+    border-radius: 20px;
+    background: #000;
+    overflow: hidden
+}
+
+.block__ai-review .slick-prev {
+    display: none !important
+}
+
+.block__ai-review-item {
+    background: #000;
+    position: relative;
+    height: 100%
+}
+
+.block__ai-review-item video {
+    width: 100%
+}
+
+.block__ai-review-item img {
+    width: 100%
+}
+
+.block__ai-review-video-wrapper {
+    position: relative
+}
+
+.block__ai-review-video-wrapper:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: block;
+    background: linear-gradient(359deg, black, #00000052, #00000026, #00000000, transparent);
+    z-index: 1
+}
+
+.block__ai-review-video-boxplay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    cursor: pointer
+}
+
+.block__ai-review-video-info {
+    padding: 0 40px 60px
+}
+
+.block__ai-review-video-info-header {
+    display: flex;
+    position: relative;
+    z-index: 1
+}
+
+.block__ai-review-video-logo {
+    background-color: #fff;
+    width: 37%;
+    border-radius: 16px 16px 0 0;
+    padding: 5px 68px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.block__ai-review-video-logo img {
+    max-width: 119px;
+    height: fit-content
+}
+
+.block__ai-review-video-text-wrapper {
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    background: #000;
+    width: 63%
+}
+
+.block__ai-review-video-text {
+    background-color: #fbf7ed;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 30px;
+    height: 100%
+}
+
+.block__ai-review-video-rate {
+    font-weight: 600;
+    font-size: 21.94px;
+    line-height: 100%;
+    color: #000
+}
+
+.block__ai-review-video-rate path {
+    fill: #000
+}
+
+.block__ai-review-video-rate-content {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 130%;
+    color: #000
+}
+
+.block__ai-review-video-info-text {
+    background-color: #fff;
+    padding: 48px 60px 28px;
+    position: relative;
+    width: calc(100% - 20px)
+}
+
+.block__ai-review-video-info-text:before {
+    height: 20px;
+    width: 80%;
+    background-color: #fff;
+    content: "";
+    display: block;
+    position: absolute;
+    top: -19px;
+    left: 0
+}
+
+.block__ai-review-video-info-text>p {
+    margin: 0 0 20px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 34px;
+    color: #000
+}
+
+.block__ai-review-video-info-profile {
+    padding-top: 20px;
+    position: relative
+}
+
+.block__ai-review-video-info-profile:before {
+    content: "";
+    background: linear-gradient(90deg, #f7d379, #e9be65 13.02%, #f5e583 23.44%, #c89447 38.8%, #dcab57 46.06%, #d6a453 54.62%, #f7d87b 63.95%, #a57331 73.55%, #c18d42 83.41%, #c08a41);
+    height: 1px;
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 0
+}
+
+.block__ai-review-video-info-profile h6 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: #000;
+    margin: 0
+}
+
+.block__ai-review-video-info-profile p {
+    font-weight: 300;
+    font-style: Italic;
+    font-size: 16px;
+    line-height: 28px;
+    margin: 0
+}
+
+.block__ai-review-video-info-arrow {
+    background-color: #000;
+    padding: 24px 14px 3px 22px;
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 10px 0 0;
+    cursor: pointer
+}
+
+.block__ai-review-video-info-arrow .icon-ai-acco-open {
+    display: none
+}
+
+.block__ai-review-video-info-arrow:hover .icon-ai-acco-open {
+    display: block
+}
+
+.block__ai-review-video-info-arrow:hover .icon-ai-right-arrow {
+    display: none
+}
+
+.block__ai-review-video-info-blank-bottom {
+    width: calc(100% - 66px);
+    height: 20px;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    background: #fff;
+    border-radius: 0 0 10px 10px
+}
+
+.block__ai-review-video-info-blank-bottom-right {
+    height: calc(100% - 57px);
+    width: 20px;
+    position: absolute;
+    right: -20px;
+    top: 0;
+    background: #fff;
+    border-radius: 0 10px 10px 0
+}
+
+.block__ai-review-heading {
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 53px;
+    text-align: center;
+    margin: 0;
+    padding: 60px 0 52px
+}
+
+.block__ai-review-trusted-logos {
+    border-radius: 20px;
+    width: calc(50% - 4px);
+    overflow: hidden;
+    background-image: url(../images/review-bg.png);
+    background-size: cover;
+}
+
+.block__ai-review-trusted-logos-wrapper {
+    display: flex;
+    position: relative;
+    height: 600px;
+    overflow: hidden
+}
+
+.block__ai-review-trusted-logos-wrapper:before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 80px;
+    display: block;
+    /* background: linear-gradient(180deg, #fff, #fff0); */
+    z-index: 2;
+    pointer-events: none
+}
+
+.block__ai-review-trusted-logos-wrapper:after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 80px;
+    display: block;
+    /* background: linear-gradient(180deg, #fff0, #fff); */
+    z-index: 2;
+    pointer-events: none
+}
+
+.block__ai-review-trusted-logos-column {
+    width: 33.33%;
+    height: 100%;
+    overflow: hidden;
+    border-right: 1px solid #0000000a
+}
+
+.block__ai-review-trusted-logos-column:last-child {
+    border-right: none
+}
+
+.block__ai-review-trusted-logos-column-inner {
+    display: flex;
+    flex-direction: column;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear
+}
+
+.block__ai-review-trusted-logos-column--slow .block__ai-review-trusted-logos-column-inner {
+    animation-name: scrollSlow;
+    animation-duration: 60s
+}
+
+.block__ai-review-trusted-logos-column--fast .block__ai-review-trusted-logos-column-inner {
+    animation-name: scrollFast;
+    animation-duration: 25.7s
+}
+
+.block__ai-review-trusted-logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #0000000a;
+    padding: 20px;
+    min-height: 120px;
+    flex-shrink: 0
+}
+
+@keyframes scrollSlow {
+    0% {
+        transform: translateY(0)
+    }
+
+    to {
+        transform: translateY(-50%)
+    }
+}
+
+@keyframes scrollFast {
+    0% {
+        transform: translateY(0)
+    }
+
+    to {
+        transform: translateY(-50%)
+    }
+}
+
+.block__ai-review-trusted-logo img {
+    width: 100%
+}
+
+@media screen and (max-width: 1500px) {
+    .block__ai-review-video-logo {
+        width: 34%;
+        padding: 28px 60px 10px
+    }
+
+    .block__ai-review-video-text-wrapper {
+        width: 66%
+    }
+
+    .block__ai-review-video-info-text {
+        padding: 48px 40px 28px 60px
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .block__ai-review-video-info-text {
+        padding: 48px 55px 28px 40px
+    }
+
+    .block__ai-review-video-text {
+        padding: 20px
+    }
+
+    .block__ai-review-video-info-text>p {
+        font-size: 18px;
+        line-height: 32px
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .block__ai-review-video-info {
+        padding: 0 30px 50px
+    }
+
+    .block__ai-review-video-rate {
+        font-size: 19.94px
+    }
+
+    .block__ai-review-video-rate-content {
+        font-size: 16px
+    }
+
+    .block__ai-review-video-info-text {
+        padding: 35px 50px 28px 40px
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .block__ai-review-video-info-text {
+        padding: 25px 40px 14px
+    }
+
+    .block__ai-review-video-logo {
+        padding: 25px 40px 10px
+    }
+
+    .block__ai-review-video-logo img {
+        max-width: 90px
+    }
+
+    .block__ai-review-video-info-text>p {
+        font-size: 16px;
+        line-height: 29px
+    }
+
+    .block__ai-review-video-text {
+        padding: 15px;
+        height: 100%
+    }
+
+    .block__ai-review-heading {
+        padding: 60px 20px 52px;
+        font-size: 38px
+    }
+
+    .block__ai-review-video-rate svg {
+        height: 24px;
+        width: 24px
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .block__ai-review-video-logo img {
+        max-width: 80px
+    }
+
+    .block__ai-review-video-info-text {
+        padding: 25px 35px 10px
+    }
+
+    .block__ai-review-video-logo {
+        padding: 18px 40px 10px;
+        width: 30%
+    }
+
+    .block__ai-review-video-text-wrapper {
+        width: 70%
+    }
+
+    .block__ai-review-video-rate {
+        font-size: 17.94px
+    }
+
+    .block__ai-review-video-rate-content {
+        font-size: 15px
+    }
+
+    .block__ai-review-video-info-text>p {
+        font-size: 15px
+    }
+
+    .block__ai-review-video-info-profile h6 {
+        font-size: 18px
+    }
+
+    .block__ai-review-video-info-profile p {
+        font-size: 14px;
+        line-height: 26px
+    }
+
+    .block__ai-review-heading {
+        font-size: 34px
+    }
+}
+
+@media screen and (max-width: 1084px) {
+    .block__ai-review-section .container_content {
+        padding: 0 20px
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .block__ai-review-wrapper {
+        flex-wrap: wrap
+    }
+
+    .block__ai-review,
+    .block__ai-review-trusted-logos {
+        width: 100%
+    }
+
+    .block__ai-review-trusted-logos-wrapper {
+        height: 400px
+    }
+
+    .block__ai-review-trusted-logo {
+        min-height: 100px;
+        padding: 15px
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .block__ai-review-video-info {
+        padding: 0 20px 40px
+    }
+
+    .block__ai-review-video-info-text {
+        padding: 20px 0 0 20px
+    }
+
+    .block__ai-review-video-logo {
+        padding: 21px 20px 0
+    }
+
+    .block__ai-review-video-rate {
+        font-size: 16px
+    }
+
+    .block__ai-review-video-rate-content {
+        font-size: 14px;
+        font-weight: 500
+    }
+
+    .block__ai-review-video-text {
+        padding: 10px 8px
+    }
+
+    .block__ai-review-video-info-text>p {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 28px
+    }
+
+    .block__ai-review-video-info-profile>* {
+        max-width: 194px
+    }
+
+    .block__ai-review-video-text {
+        align-items: baseline;
+        gap: 0
+    }
+
+    .block__ai-review-video-rate {
+        min-width: 65px
+    }
+
+    .block__ai-review-video-info-arrow {
+        padding: 13px 0 0 13px
+    }
+
+    .block__ai-review-video-info-blank-bottom-right {
+        height: calc(100% - 43px);
+        right: -19px
+    }
+
+    .block__ai-review-video-info-blank-bottom {
+        width: calc(100% - 43px);
+        bottom: -19px
+    }
+
+    .block__ai-review-video-logo {
+        border-radius: 10px 10px 0 0
+    }
+
+    .block__ai-review-video-text-wrapper {
+        padding-left: 5px;
+        padding-bottom: 5px
+    }
+
+    .block__ai-review-video-logo {
+        width: 35%
+    }
+
+    .block__ai-review-video-text-wrapper {
+        width: 65%
+    }
+
+    .block__ai-review-heading {
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 38px;
+        padding: 40px 20px 20px
+    }
+
+    .block__ai-review-video-info-text:before {
+        top: -17px;
+        left: 0
+    }
+
+    .block__ai-review-trusted-logos {
+        border-radius: 10px
+    }
+
+    .block__ai-review-trusted-logos-wrapper {
+        height: 300px
+    }
+
+    .block__ai-review-trusted-logo {
+        min-height: 80px;
+        padding: 10px
+    }
+
+    .block__ai-review-video-boxplay svg {
+        width: 40px;
+        height: 40px
+    }
+}
+
 /*# sourceMappingURL=/cdn/shop/t/87/assets/ai-review.css.map?v=122017110212089722791759523525 */

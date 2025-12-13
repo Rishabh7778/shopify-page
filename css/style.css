@@ -8,6 +8,14 @@
     --transition: 0.22s ease-out;
 }
 
+.text-dark {
+    color: #0d0d0d !important;
+}
+
+.text-light {
+    color: #ffffff !important;
+}
+
 .faq-section {
     padding: 60px 16px 80px;
 }
@@ -249,4 +257,13 @@
     .reasons-section {
         padding: 50px 20px;
     }
+}
+
+.list-unstyled.slider_icon_list img {
+    width: 70px;
+    height: 70px;
+}
+
+.fix-width {
+    min-width: 104px;
 }
